@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <script src="./lib/angular/angular.min.js"></script>
+    <script src="main.js"></script>
+
+</head>
+<body>
+
+<div ng-init="text='Hello world this angular'">
+    {{ text }}
+</div>
+
+<div class="friends" ng-controller="SettingsController2 as settings">
+    <input type="text" ng-model="filtr"/>
+    <ul>
+        <li ng-repeat="li in settings.list | filter:filtr">
+            {{ li }}
+        </li>
+    </ul>
+</div>
+
+<div ng-controller="SettingsController1 as settings">
+    {{ name }} and
+    {{ settings.name }}
+</div>
+<div ng-controller="SettingsController2 as settings">
+    <input type="text" ng-model="fname"/>
+    <button type="sybmit" ng-click="settings.addName(fname)">ADD</button>
+    <div>
+        <ul>
+            <li ng-repeat="name in settings.names track by $index">
+                {{ name }}
+                <button type="sybmit" ng-click="settings.deleteName($index)">DELETE</button>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+
+</html>
